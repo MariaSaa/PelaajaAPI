@@ -1,0 +1,9 @@
+Pelaajat
+1. GET /players - palauttaa pelaajien nimet ja id:t DONE
+2. POST /players - uuden pelaajan luomiseen DONE
+3. GET /players/{id} - palauttaa tietyn pelaajan kaikki tiedot DONE
+4. GET /players/{id}/events - palauttaa tietyn pelaajan kaikki eventit
+5. POST /players/{id}/events - luo uuden eventin pelaajalle
+eventit
+6. GET /events - palauttaa kaikki eventit
+7. 
