@@ -1,9 +1,43 @@
 Pelaajat
+
+Pelaajat
+id
+name
+events
+
+
 1. GET /players - palauttaa pelaajien nimet ja id:t DONE
 2. POST /players - uuden pelaajan luomiseen DONE
 3. GET /players/{id} - palauttaa tietyn pelaajan kaikki tiedot DONE
 4. GET /players/{id}/events - palauttaa tietyn pelaajan kaikki eventit
 5. POST /players/{id}/events - luo uuden eventin pelaajalle
-eventit
+Eventit
+
+Eventit
+id
+type
+detail
+player_id
+timestamp
+
+
 6. GET /events - palauttaa kaikki eventit
-7. 
+
+MALLIT uuden pelaajan luomiseen
+
+class PlayerIn(BaseModel): #ei tarvi tietää eventeistä mitään?!
+    name: str
+    event: list
+
+class PlayerDb(PlayerIn):
+    id: int
+    events (list[EventsBase])
+
+class EventsBase(perii BaseModel)
+
+###
+from datetime import datetime
+
+# Getting the current date and time
+dt = datetime.now()
+###
