@@ -1,5 +1,5 @@
-import string
-from fastapi import FastAPI
+# import string
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -11,23 +11,23 @@ class PlayerIn(BaseModel):
 #3
 class PlayerAllList(BaseModel):
     id: int
-    name: string
+    name: str
 
 #4
 class EventsBase(BaseModel):
     id: int
-    type: string 
-    detail: string 
+    type: str
+    detail: str
 
-#2
+# #2
 class PlayerDb(PlayerIn):
-    id: int
-    events: (list[EventsBase])
+     id: int
+     #events: (list[EventsBase])
 
-#5
+# #5
 class EventsDb(EventsBase):
     player_id: int
-    timestamp: string
+    timestamp: str
 
 
 players = [
@@ -51,9 +51,15 @@ def player_name_id():
     return player_names_and_ids
 
 #GET /players/{id} - palauttaa tietyn pelaajan kaikki tiedot
-@app.get('/players/{id}')
-def get_players(id: int):
-    return players[id]
+@app.get("/players/{id}")
+def get_player(id: int):
+    for player in players:
+        if player['id'] == id:
+            player_events = [event for event in events if event['player_id'] == id]
+            player['events'] = player_events
+            return player
+    raise HTTPException(status_code=404, detail='Player not found')
+
 
 #POST /players - uuden pelaajan luomiseen
 @app.post('/players')
@@ -65,10 +71,13 @@ def create_player(player_in:PlayerIn):
 
 #4. GET /players/{id}/events - palauttaa tietyn pelaajan kaikki eventit
 @app.get('/players/{id}/events')
-def get_player_events(id: int):
+def get_player_events(id: int, type: str):
     #tarkista pelaaja
-    for i in range(players):
+    for i in range(len(players)):
         if players[i] == id:
             player = players[i]
-    player_events = [event for event in events if event['player_id'] == id]
+        else:
+            raise HTTPException(detail="player not found", status_code=404)
+    #tarkista event
+    player_events = [event for event in events if event['player_id'] == id and event['event_type'] in ['level_started', 'level_sorted']]
     return player_events
