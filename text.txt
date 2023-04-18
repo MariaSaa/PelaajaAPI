@@ -9,8 +9,19 @@ events
 1. GET /players - palauttaa pelaajien nimet ja id:t DONE
 2. POST /players - uuden pelaajan luomiseen DONE
 3. GET /players/{id} - palauttaa tietyn pelaajan kaikki tiedot DONE
-4. GET /players/{id}/events - palauttaa tietyn pelaajan kaikki eventit
+4. GET /players/{id}/events - palauttaa tietyn pelaajan kaikki eventit DONE
 5. POST /players/{id}/events - luo uuden eventin pelaajalle
+
+@app.post('/players/{id}/events' status_code=201)
+def create_event(type: str = None, detail= str):
+        while stauts 201
+            if pelaaja ok
+                if event ok
+                else HTTPException 400
+            else HTTPException 404
+        else == 422
+
+
 Eventit
 
 Eventit
