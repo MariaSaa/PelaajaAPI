@@ -1,5 +1,4 @@
-# import string
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -19,6 +18,7 @@ class PlayerAllList(BaseModel):
 class EventsBase(BaseModel):
     id: int
     type: str
+    #timestamp: Optional[datetime]
     detail: str
 
 # #2
@@ -30,6 +30,7 @@ class PlayerDb(PlayerIn):
 class EventsDb(EventsBase):
     player_id: int
     timestamp: str
+    
 
 
 players = [
@@ -99,22 +100,40 @@ def get_player_events(id: int, type: str = None):
 
 #5. POST /players/{id}/events - luo uuden eventin pelaajalle
 #tuplakoodia! korjaa! (pelaajan ja eventin tarkistus)
+#ei näy type lopputuloksessa
 @app.post('/players/{id}/events', status_code=201, response_model=EventsDb,)
 def create_event(id: int, event: EventsBase, type: str = None):
-    #tarkista pelaaja
+    #looping through players list
     player = None
     for p in players:
         if p['id'] == id:
             player = PlayerDb(**p)
             break
+    #if not true, raise exception
     if not player:
         raise HTTPException(status_code=404, detail='Player not found',)
-    #tarkista event type
+    #check event type
     if type is not None:
         if type not in ['level_started', 'level_sorted']:
+            #if not true, raise exception
             raise HTTPException(status_code=400, detail='Invalid event')
-    #luo uusi event
-    new_event = EventsDb(**event.dict(), player_id=id, timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    #create new event
+    new_event = EventsDb(**event.dict(), player_id=id, timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S")) #change this 
     player.events.append(new_event)
     return new_event
+
+# 6. GET /events - palauttaa kaikki eventit
+@app.get('/events', response_model=List[EventsDb])
+def get_events():
+    checkEvents = []
+    for player in players:
+        if 'events' not in player:
+            continue
+        for event in player['events']:
+            if type is None or event['type'] == type:
+                checkEvents.append(event)
+            elif type not in ['level_started', 'level_sorted']:
+                raise HTTPException(status_code=400, detail='Invalid event')
+    return checkEvents
+
 

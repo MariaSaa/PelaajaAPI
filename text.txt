@@ -14,7 +14,6 @@ events
 
 @app.post('/players/{id}/events' status_code=201)
 def create_event(type: str = None, detail= str):
-        while stauts 201
             if pelaaja ok
                 if event ok
                 else HTTPException 400
@@ -33,6 +32,16 @@ timestamp
 
 
 6. GET /events - palauttaa kaikki eventit
+ statuskoodi 200
+ luo tyhjä lista []
+ tarkista event type
+ if type not in level_started or level_sorted
+    HTTPException 400
+else:
+    lisää listaan asioita
+return lista
+
+return events
 
 MALLIT uuden pelaajan luomiseen
 
