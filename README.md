@@ -8,8 +8,8 @@ Luotu käyttämällä Python versiota 3.11.1
 ```
 git clone https://github.com/MariaSaa/PelaajaAPI.git 
 ```
-4. Avaa kopioitu repo koodieditoriin
-5. Luo virtual enviroment (venv)
+2. Avaa kopioitu repo koodieditoriin
+3. Luo virtual enviroment (venv)
     
     a. Visual studio codessa command palette (Ctrl + Shift + P)
     
@@ -19,7 +19,7 @@ git clone https://github.com/MariaSaa/PelaajaAPI.git
     
     d. Valitse Python versio ja enter
     
-3. tarkista että luomasi venv on myös käynnissä. Jossei käynnisty automaattisesti, syötä alla oleva rimpsu terminaaliin projekti kansiossa:
+4. tarkista että luomasi venv on myös käynnissä. Jossei käynnisty automaattisesti, syötä alla oleva rimpsu terminaaliin projekti kansiossa:
 ```
 .venv/Scripts/Activate.ps1
 ```
@@ -28,13 +28,13 @@ git clone https://github.com/MariaSaa/PelaajaAPI.git
 ```
 pip install fastapi uvicorn
 ```
-7. Asenna Sqlalchemy: 
+6. Asenna Sqlalchemy: 
 ```
 pip install sqlalchemy
 ```
-6. Käynnistä
+7. Käynnistä
 ```
 uvicorn app.main:app --reload
 ```
-7. Klikkaa linkkiä ja lisää _/docs_ jolloin dokumentaatio aukeaa 
+8. Klikkaa linkkiä ja lisää _/docs_ jolloin dokumentaatio aukeaa 
 
