@@ -2,11 +2,6 @@ from sqlalchemy import Column, Integer, String, func, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from .database import Base
 
-#Pelaajat
-#id
-#name
-#events
-
 class Player(Base):
     __tablename__ = 'players'
     id = Column(Integer, primary_key=True, index=True)
