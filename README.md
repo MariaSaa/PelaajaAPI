@@ -8,7 +8,7 @@ Luotu käyttämällä Python versiota 3.11.1
 ```
 git clone https://github.com/MariaSaa/PelaajaAPI.git 
 ```
-2. Avaa kopioitu repo koodieditoriin ( . code -komento)
+2. Avaa kopioitu repo koodieditoriin ( code . -komento)
 3. Luo virtual enviroment (venv)
     
     a. Visual studio codessa command palette (Ctrl + Shift + P)
@@ -20,8 +20,14 @@ git clone https://github.com/MariaSaa/PelaajaAPI.git
     d. Valitse Python versio ja enter
     
 4. tarkista että luomasi venv on myös käynnissä. Jossei käynnisty automaattisesti, syötä alla oleva rimpsu terminaaliin projekti kansiossa:
+
+Windows
 ```
 .venv/Scripts/Activate.ps1
+```
+Mac
+```
+source venv/bin/activate1
 ```
 
 5. Asenna FastAPI:
