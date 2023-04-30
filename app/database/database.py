@@ -1,9 +1,27 @@
-players = [
-    {'id':1, 'name':'Maria'},
-    {'id':2, 'name':'Reijo'},
-    {'id':3, 'name':'Veijo'},
-    {'id':4, 'name':'Keijo'}
-]
+from .schemas import PlayerDb, EventsDb
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+#connection string
+#tekee projektin juureen pelaajaAPI tietokannan
+SQLALCHEMY_DATABASE_URL = "sqlite:///./pelaajaAPI.db"
+
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+)
+
+#Sessionlocal, luodaan yhteys
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base = declarative_base()
+
+# players = [
+#     {'id':1, 'name':'Maria'},
+#     {'id':2, 'name':'Reijo'},
+#     {'id':3, 'name':'Veijo'},
+#     {'id':4, 'name':'Keijo'}
+# ]
 
 events = [
     {'id':0, 'type':'level_started', 'detail': 'v2021', 'player_id':1, 'timestamp':'12.4.2023 19:28'},
