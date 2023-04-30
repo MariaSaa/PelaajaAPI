@@ -8,7 +8,7 @@ Luotu käyttämällä Python versiota 3.11.1
 ```
 git clone https://github.com/MariaSaa/PelaajaAPI.git 
 ```
-2. Avaa kopioitu repo koodieditoriin
+2. Avaa kopioitu repo koodieditoriin ( . code -komento)
 3. Luo virtual enviroment (venv)
     
     a. Visual studio codessa command palette (Ctrl + Shift + P)
