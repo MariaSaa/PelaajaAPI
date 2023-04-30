@@ -3,6 +3,33 @@ Backend kurssin lopputyö
 
 Luotu käyttämällä Python versiota 3.11.1
 
+# Endpointit
+
+GET /players - palauttaa pelaajien nimet ja id:t
+
+ok
+
+POST /players - uuden pelaajan luomiseen
+
+ok
+
+GET /players/{id} - palauttaa tietyn pelaajan kaikki tiedot
+
+ok
+
+GET /players/{id}/events - palauttaa tietyn pelaajan kaikki eventit
+
+ei filtteröi eventin tyypin mukaan
+
+POST /players/{id}/events - luo uuden eventin pelaajalle
+
+ok
+
+GET /events - palauttaa kaikki eventit
+
+ei palauta mitääm, validation error for EventsDb
+
+
 ## Käynnistysohjeet:
 1. Avaa Git Bash. Siirry directoryyn mihin haluat kloonata repon ja kopioi teksti:
 ```
