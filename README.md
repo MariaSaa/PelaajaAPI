@@ -42,5 +42,5 @@ pip install sqlalchemy
 ```
 uvicorn app.main:app --reload
 ```
-8. Klikkaa linkkiä ja lisää _/docs_ jolloin dokumentaatio aukeaa 
+8. Klikkaa linkkiä ja lisää _/docs_ jolloin dokumentaatio aukeaa
 
