@@ -55,7 +55,5 @@ def get_player_events(id: int, type: str = None, db: Session = Depends(get_db)):
 @router.post('/{id}/events', response_model=schemas.EventsDb, status_code=201)
 def create_event_database(event_in: schemas.EventsBase, id: int, db: Session = Depends(get_db)):
     player = crud_player.get_player(db, id)
-    # if not player:
-    #     raise HTTPException(status_code=404, detail='Player not found')
     event = crud_player.create_events(db, event_in, player_id=id)
     return event
